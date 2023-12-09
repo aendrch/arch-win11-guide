@@ -69,3 +69,30 @@ After installation (set up of and logging into Windows not required), reboot int
 ##### Time standard
 - Recommended: Set both Arch Linux and Windows to use UTC, following [System time#UTC in Microsoft Windows](https://wiki.archlinux.org/title/System_time#UTC_in_Microsoft_Windows "System time"). Some versions of Windows revert the hardware clock back to _localtime_ if they are set to synchronize the time online. This issue appears to be fixed in Windows 10.
 - Not recommended: Set Arch Linux to _localtime_ and disable all [time synchronization daemons](https://wiki.archlinux.org/title/System_time#Time_synchronization "System time"). This will let Windows take care of hardware clock corrections and you will need to remember to boot into Windows at least two times a year (in Spring and Autumn) when [DST](https://en.wikipedia.org/wiki/Daylight_saving_time "wikipedia:Daylight saving time") kicks in. So please do not ask on the forums why the clock is one hour behind or ahead if you usually go for days or weeks without booting into Windows.
+
+### Commands to run in Arch
+
+```shell
+
+# Pre-installation
+loadkeys la-latin1
+
+# Post-installation
+setxkbmap -layout latam,latam
+
+iwctl
+
+device list
+
+station CUSTOM_DEVICENAME scan  
+
+station CUSTOM_DEVICENAME get-networks
+
+station CUSTOM_DEVICENAME connect ROUTER_NAME
+
+exit
+
+ping archlinux.org
+
+timedatectl set-ntp true
+```
